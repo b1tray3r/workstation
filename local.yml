@@ -2,6 +2,7 @@
 - hosts: all
   become: yes
   become_method: sudo
+  ansible_connection: local
 
   roles:
     - terminator
