@@ -1,5 +1,5 @@
 ---
 
 - name: include debian tasks
-  include: debian.yml
+  include_tasks: debian.yml
   when: ansible_distribution == Ubuntu
