@@ -1,0 +1,62 @@
+[global_config]
+  enabled_plugins = Logger, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler
+[keybindings]
+  new_tab = <Primary>t
+  cycle_next = ""
+  cycle_prev = ""
+  go_next = ""
+  go_prev = ""
+  go_up = Up
+  go_down = Down
+  go_left = Left
+  go_right = Right
+  rotate_cw = ""
+  rotate_ccw = ""
+  split_horiz = <Alt>Down
+  split_vert = <Alt>Right
+  close_term = ""
+  copy = ""
+  paste = <Primary>v
+  toggle_scrollbar = ""
+  search = ""
+  close_window = <Primary>w
+  resize_up = ""
+  resize_down = ""
+  resize_left = ""
+  resize_right = ""
+  move_tab_right = ""
+  move_tab_left = ""
+  toggle_zoom = ""
+  scaled_zoom = ""
+  next_tab = ""
+  prev_tab = ""
+  reset = <Primary>r
+  reset_clear = ""
+  hide_window = ""
+  group_all = ""
+  ungroup_all = ""
+  group_tab = ""
+  ungroup_tab = ""
+  new_window = ""
+  new_terminator = ""
+  insert_number = ""
+  insert_padded = ""
+  edit_window_title = ""
+  edit_tab_title = ""
+  edit_terminal_title = ""
+  layout_launcher = ""
+  help = ""
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = Source Code Pro Semi-Bold 13
+    use_system_font = true
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

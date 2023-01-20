@@ -1,5 +1,10 @@
 ---
 
-- name: include debian tasks
-  include_tasks: debian.yml
-  when: ansible_distribution == Ubuntu
+- name: include tasks based on ansible_distribution
+  ansible.builtin.include_tasks:
+    file: "{{ item }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml"
+      - "{{ ansible_distribution }}.yml"
+      skip: True

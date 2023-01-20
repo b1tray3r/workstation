@@ -1,0 +1,18 @@
+---
+
+- name: install terminator
+  ansible.builtin.apt:
+    name: terminator
+    state: present
+
+- name: create config directory
+  ansible.builtin.file:
+    path: /home/aborgardt/.config/terminator/
+    state: directory
+
+- name: install configuration
+  ansible.builtin.copy:
+    src: config
+    dest: /home/aborgardt/.config/terminator/config
+    owner: "{{ remote_user }}"
+    group: "{{ remote_user }}"
