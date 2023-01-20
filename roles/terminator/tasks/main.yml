@@ -2,4 +2,4 @@
 
 - name: include debian tasks
   include: debian.yml
-  when: ansible_distribution is "Ubuntu"
+  when: ansible_distribution == Ubuntu
