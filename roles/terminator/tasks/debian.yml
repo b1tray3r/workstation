@@ -1,0 +1,6 @@
+---
+
+- name: Install terminator
+  ansible.builtin.apt:
+    name: terminator
+    state: present
