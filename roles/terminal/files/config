@@ -15,7 +15,7 @@
   split_horiz = <Alt>Down
   split_vert = <Alt>Right
   close_term = ""
-  copy = ""
+  copy = <Primary>c
   paste = <Primary>v
   toggle_scrollbar = ""
   search = ""
@@ -30,13 +30,14 @@
   scaled_zoom = ""
   next_tab = ""
   prev_tab = ""
-  reset = <Primary>r
+  reset = <Alt>r
   reset_clear = ""
   hide_window = ""
   group_all = ""
   ungroup_all = ""
   group_tab = ""
   ungroup_tab = ""
+  search = <Alt>r
   new_window = ""
   new_terminator = ""
   insert_number = ""
