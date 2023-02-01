@@ -4,3 +4,5 @@
 
   roles:
     - terminal
+    - vscode
+    - settings

@@ -1,0 +1,18 @@
+---
+
+- name: copy the kde shortcuts into place
+  ansible.builtin.copy:
+    src: kglobalshortcutsrc
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/kglobalshortcutsrc"
+
+- name: Replace the terminal with terminator
+  community.general.ini_file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/kdeglobals"
+    section: General
+    option: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+    exclusive: true
+  with_items:
+    - { name: TerminalApplication, value: terminator }
+    - { name: TerminalService, value: terminator.desktop }

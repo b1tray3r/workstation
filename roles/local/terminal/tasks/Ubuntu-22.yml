@@ -9,6 +9,8 @@
   ansible.builtin.file:
     path: /home/aborgardt/.config/terminator/
     state: directory
+    owner: "{{ remote_user }}"
+    group: "{{ remote_user }}"
 
 - name: install configuration
   ansible.builtin.copy:
