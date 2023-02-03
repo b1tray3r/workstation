@@ -1,0 +1,7 @@
+[safe]
+	{% for directory in env_vars['GIT_SAFE_DIRECTORIES'] | split(',') | list -%}
+	directory = {{ directory }}
+	{% endfor %}	
+[user]
+	email = {{ env_vars['GIT_EMAIL'] }}
+	name = {{ env_vars['GIT_USERNAME'] }}

@@ -3,6 +3,7 @@
   become: yes
 
   roles:
+    - load_environment
     - terminal
     - vscode
     - settings

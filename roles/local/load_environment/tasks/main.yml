@@ -1,0 +1,28 @@
+---
+
+- name: Replace the terminal with terminator
+  community.general.ini_file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/kdeglobals"
+    section: General
+    option: "{{ setting.name }}"
+    value: "{{ setting.value }}"
+    state: present
+    exclusive: true
+  loop_control:
+    loop_var: setting
+  with_items:
+    - { name: TerminalApplication, value: terminator }
+    - { name: TerminalService, value: terminator.desktop }
+
+- name: Get env file content
+  slurp:
+    src: "{{ lookup('ansible.builtin.env', 'HOME') }}/.env"
+  register: env_file_content
+
+- name: Parse environment
+  set_fact:
+    env_vars: "{{ ('{' + (env_file_content.content | b64decode).split('\n') | select | map('regex_replace', '([^=]*)=(.*)', '\"\\1\": \"\\2\"') | join(',') + '}') | from_json }}"
+
+- name: Display environment variables
+  command: env
+  environment: "{{ env_vars }}"

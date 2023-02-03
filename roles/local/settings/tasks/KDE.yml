@@ -9,10 +9,22 @@
   community.general.ini_file:
     path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/kdeglobals"
     section: General
-    option: "{{ item.name }}"
-    value: "{{ item.value }}"
+    option: "{{ setting.name }}"
+    value: "{{ setting.value }}"
     state: present
     exclusive: true
+  loop_control:
+    loop_var: setting
   with_items:
     - { name: TerminalApplication, value: terminator }
     - { name: TerminalService, value: terminator.desktop }
+
+# minus in the template -%} removes trailing newline
+- name: Fill in the .gitconfig file
+  ansible.builtin.template:
+    src: ".gitconfig.j2"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.gitconfig"
+
+- name: Set the hostname
+  ansible.builtin.hostname:
+    name: "{{ inventory_hostname }}"
