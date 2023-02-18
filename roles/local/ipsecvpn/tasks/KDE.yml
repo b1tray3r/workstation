@@ -1,0 +1,30 @@
+---
+
+- name: debug
+  debug:
+    msg: "{{ env_vars['VPN_SDZ_USE_FULL_VPN'] }}"
+
+- name: Install template for split vpn connection to network manager
+  ansible.builtin.template:
+    src: "ipsec_vpn.nmconnection.j2"
+    dest: "/etc/NetworkManager/system-connections/sdz-vpn.nmconnection"
+    owner: "root"
+    group: "root"
+    mode: "0600"
+  vars:
+    vpn_network_name: "SDZeCOM-VPN-Split"
+    vpn_network_gateway: "vpngw.sup.sdzecom.de"
+  when: not (env_vars['VPN_SDZ_USE_FULL_VPN']|bool)
+
+- name: Install template for full vpn connection to network manager
+  ansible.builtin.template:
+    src: "sdz-vpn.nmconnection.j2"
+    dest: "/etc/NetworkManager/system-connections/sdz-vpn.nmconnection"
+    owner: "root"
+    group: "root"
+    mode: "0600"
+  vars:
+    vpn_network_name: "SDZeCOM-VPN-Full"
+    vpn_network_gateway: "vpngwfull.sup.sdzecom.de"
+  when: env_vars['VPN_SDZ_USE_FULL_VPN']|bool
+

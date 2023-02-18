@@ -1,0 +1,17 @@
+---
+
+- name: Install basic software
+  register: updatesys
+  apt:
+    update_cache: yes
+    name:
+      - neovim
+      - htop
+      - progress
+      - nmap
+      - network-manager
+      - strongswan-nm
+      - network-manager-strongswan
+      - libcharon-extra-plugins
+      - resolvconf
+    state: present

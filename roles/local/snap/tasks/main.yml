@@ -1,0 +1,6 @@
+---
+ 
+- name: Install software from env variable 
+  community.general.snap:
+    name: "{{ env_vars['SNAP_PACKAGES'] | split(',') | list }}"
+    classic: true 

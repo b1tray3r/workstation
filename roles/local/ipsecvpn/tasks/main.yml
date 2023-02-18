@@ -1,0 +1,14 @@
+---
+
+- name: include tasks based on ansible_distribution
+  ansible.builtin.include_tasks:
+    file: "{{ item }}"
+  with_first_found:
+    - files:
+      - "{{ lookup('ansible.builtin.env', 'XDG_CURRENT_DESKTOP') }}.yml"
+      skip: True
+
+- name: restart NetworkManager service to load the new vpn connection
+  service:
+    name: NetworkManager
+    state: restarted

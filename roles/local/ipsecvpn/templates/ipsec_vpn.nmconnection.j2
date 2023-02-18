@@ -1,0 +1,28 @@
+[connection]
+id={{ vpn_network_name}}
+type=vpn
+permissions=user:{{ env_vars['VPN_SDZ_USERNAME'] }}:;
+
+[vpn]
+address={{ vpn_network_gateway }}
+encap=no
+esp=aes256-sha256
+ike=aes256-sha2_256-modp2048
+ipcomp=no
+method=eap
+proposal=yes
+user={{ env_vars['VPN_SDZ_USERNAME'] }}
+virtual=yes
+service-type=org.freedesktop.NetworkManager.strongswan
+
+[vpn-secrets]
+password={{ env_vars['VPN_SDZ_PASSWORD'] }}
+
+[ipv4]
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto
+
+[proxy]

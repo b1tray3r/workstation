@@ -3,7 +3,9 @@
   become: yes
 
   roles:
+    - basic_software
     - load_environment
     - terminal
-    - vscode
+    - sdzvpn
+    - snap
     - settings
